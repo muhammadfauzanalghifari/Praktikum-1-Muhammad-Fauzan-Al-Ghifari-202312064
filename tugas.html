@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Pendaftaran Mahasiswa Baru</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 700px;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #0056b3;
+            margin-bottom: 30px;
+        }
+
+        form {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        fieldset {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            background-color: #fcfcfc;
+        }
+
+        legend {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #007bff;
+            padding: 0 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        .radio-group label,
+        .checkbox-group label {
+            display: inline-block;
+            margin-right: 15px;
+            font-weight: normal;
+        }
+
+        input[type="submit"] {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+
+        .logo-kampus {
+            display: block;
+            margin: 0 auto 30px auto;
+            max-width: 150px;
+            height: auto;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .info-link {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .info-link a {
+            font-size: 1.1em;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .info-link a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .radio-group label, .checkbox-group label {
+                display: block;
+                margin-bottom: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <img src="logo_stitek.png.png" alt="Logo Kampus STITEK" class="logo-kampus">
+
+    <h1>Formulir Pendaftaran Mahasiswa Baru</h1>
+
+    <form action="/submit-pendaftaran" method="post">
+        <fieldset>
+            <legend>Data Pribadi</legend>
+
+            <label for="nama_lengkap">Nama Lengkap:</label>
+            <input type="text" id="nama_lengkap" name="nama_lengkap" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="telepon">No. Telepon:</label>
+            <input type="text" id="telepon" name="telepon" required>
+
+            <label for="alamat">Alamat Lengkap:</label>
+            <textarea id="alamat" name="alamat" rows="3" required></textarea>
+
+            <label>Jenis Kelamin:</label>
+            <div class="radio-group">
+                <label><input type="radio" name="jenis_kelamin" value="Laki-laki" required> Laki-laki</label>
+                <label><input type="radio" name="jenis_kelamin" value="Perempuan"> Perempuan</label>
+            </div>
+
+            <label for="tanggal_lahir">Tanggal Lahir:</label>
+            <input type="date" id="tanggal_lahir" name="tanggal_lahir" required>
+        </fieldset>
+
+        <fieldset>
+            <legend>Pilihan Program Studi</legend>
+
+            <label for="program_studi">Program Studi yang Dipilih:</label>
+            <select id="program_studi" name="program_studi" required>
+                <option value="">-- Pilih Program Studi --</option>
+                <option value="Teknik Informatika">Teknik Informatika</option>
+                <option value="Sistem Informasi">Teknik Mesin</option>
+                <option value="Manajemen Informatika">Sastra Mesin</option>
+            </select>
+
+            <label>Jenis Pendaftaran:</label>
+            <div class="radio-group">
+                <label><input type="radio" name="jenis_pendaftaran" value="Reguler" required> Reguler</label>
+                <label><input type="radio" name="jenis_pendaftaran" value="Beasiswa"> Beasiswa</label>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Persyaratan</legend>
+            <div class="checkbox-group">
+                <label><input type="checkbox" name="berkas[]" value="Foto"> Pas Foto 3x4</label>
+                <label><input type="checkbox" name="berkas[]" value="Ijazah"> Fotokopi Ijazah</label>
+                <label><input type="checkbox" name="berkas[]" value="KTP"> Fotokopi KTP</label>
+            </div>
+        </fieldset>
+
+        <input type="submit" value="Kirim Pendaftaran">
+    </form>
+
+    <div class="info-link">
+        <p>Ingin tahu lebih lanjut? <a href="https://www.stitek.ac.id">Kunjungi situs resmi STITEK</a></p>
+    </div>
+</div>
+
+</body>
+</html>
